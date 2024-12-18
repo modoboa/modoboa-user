@@ -1,6 +1,11 @@
 <template>
   <v-app>
-    <NavBar v-if="!!NavBar" :menu-items="[]" />
+    <NavBar v-if="!!NavBar" :menu-items="layoutStore.leftMenuItems" />
+    <TopMenu
+      v-if="!!TopMenu"
+      :user="authUser"
+      remote
+    />
     <v-main>
       <v-container fluid>
         <router-view v-slot="{ Component }">
@@ -12,22 +17,19 @@
         </router-view>
       </v-container>
     </v-main>
-    <UserMenu
-      v-if="!!UserMenu"
-      :user="authUser"
-      remote
-    />
   </v-app>
 </template>
 
 <script setup>
 import { computed, defineAsyncComponent } from 'vue'
-import { useAuthStore } from '@/stores'
+import { useAuthStore, useLayoutStore } from '@/stores'
 
 const authStore = useAuthStore()
-const UserMenu = defineAsyncComponent(
-  () => import("remote/user-menu")
-);
+const layoutStore = useLayoutStore()
+const TopMenu = defineAsyncComponent(
+  () => import('remote/top-menu')
+)
+
 const NavBar = defineAsyncComponent(() => import('remote/navbar'))
 
 const authUser = computed(() => authStore.authUser)

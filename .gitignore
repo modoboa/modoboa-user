@@ -1,0 +1,29 @@
+.*~$
+*.pyc
+*.mo
+*.db
+doc/.build
+doc/.static
+doc/.templates
+DEV
+.idea
+.ropeproject
+modoboa.iml
+.tox
+.eggs/
+.coverage
+./build/
+dist/
+# JS stuff
+node_modules
+/static/dist
+/frontend/src/translations.json
+/frontend/.__mf__temp/
+
+/.project
+/.pydevproject
+
+# Misc
+.ash_history
+modoboa.kdev4
+.kateproject

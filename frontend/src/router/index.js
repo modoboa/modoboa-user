@@ -28,7 +28,7 @@ const router = createRouter({
       },
       children: [
         {
-          path: '',
+          path: ':category?',
           name: 'ContactList',
           component: () => import('../views/contacts/AddressBook.vue'),
           meta: {
